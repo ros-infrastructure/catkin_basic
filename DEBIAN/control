@@ -1,0 +1,7 @@
+Package: catkin_basic
+Version: 0.0.1
+Section: ROS
+Maintainer: Wim Meeussen <wim@hidof.com>
+Architecture: all
+Depends: ros-groovy-catkin
+Description: Easy way to use ROS Catkin
