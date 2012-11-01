@@ -35,8 +35,6 @@ macro(catkin_basic)
   cmake_parse_arguments(ARG "" "INCLUDE" "" ${ARGN})
   cmake_parse_arguments(ARG "" "LIBRARIES" "" ${ARGN})
 
-#  message(${ARG_LIBRARIES})
-
   # parse package.xml
   _catkin_package_xml(${CMAKE_CURRENT_BINARY_DIR}/catkin_generated)
 
@@ -70,6 +68,7 @@ macro(catkin_basic)
   endif()
 
   # call catkin_package on run dependencies
+  set(_CATKIN_CURRENT_PACKAGE)  # clear variable
   if (DEFINED ${_CATKIN_CURRENT_PACKAGE}_RUN_DEPENDS)
     select_catkin_dependencies(RUN "${${_CATKIN_CURRENT_PACKAGE}_RUN_DEPENDS}")
     message("  Export my include dir: "${ARG_INCLUDE})
@@ -91,7 +90,7 @@ macro(catkin_basic)
   include_directories(${ARG_INCLUDE})
 
   # install target
-  #install(DIRECTORY include/
-  #        DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  #)
+  install(DIRECTORY include/
+          DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  )
 endmacro()
