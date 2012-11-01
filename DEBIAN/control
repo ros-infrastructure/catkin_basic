@@ -1,4 +1,4 @@
-Package: catkin_basic
+Package: catkin-basic
 Version: 0.0.1
 Section: ROS
 Maintainer: Wim Meeussen <wim@hidof.com>
