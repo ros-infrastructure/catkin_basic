@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 
+find_package(catkin REQUIRED)
+include (CMakeParseArguments)
+
 
 # select the catkin dependencies from deps
 macro(select_catkin_dependencies PREFIX DEPS)
