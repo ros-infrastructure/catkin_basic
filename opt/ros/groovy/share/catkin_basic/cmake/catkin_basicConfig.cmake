@@ -55,6 +55,11 @@ macro(catkin_basic)
     find_package(catkin REQUIRED COMPONENTS ${BUILD_DEPENDENCIES})
   endif()
 
+  # use setup.py when available
+  if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/setup.py")
+    catkin_python_setup()
+  endif()
+
   # generate messages
   file(GLOB MESSAGES RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/msg" msg/*.msg)
   list(LENGTH MESSAGES NUM_MESSAGES)
