@@ -103,7 +103,9 @@ macro(catkin_basic)
   include_directories(${ARG_INCLUDE})
 
   # install target
-  install(DIRECTORY include/
-          DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  )
+  if (EXISTS include)
+    install(DIRECTORY include/
+            DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+    )
+  endif()
 endmacro()
