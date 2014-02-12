@@ -81,7 +81,6 @@ macro(catkin_basic)
   endif()
 
   # call catkin_package on run dependencies
-  set(_CATKIN_CURRENT_PACKAGE)  # clear variable
   if (DEFINED ${_CATKIN_CURRENT_PACKAGE}_RUN_DEPENDS)
     select_catkin_dependencies(RUN "${${_CATKIN_CURRENT_PACKAGE}_RUN_DEPENDS}")
     message("  Export my include dir: "${ARG_INCLUDE})
