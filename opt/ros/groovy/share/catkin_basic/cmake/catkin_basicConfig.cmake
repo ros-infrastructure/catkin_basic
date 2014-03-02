@@ -55,6 +55,9 @@ macro(catkin_basic)
     find_package(catkin REQUIRED COMPONENTS ${BUILD_DEPENDENCIES})
   endif()
 
+  # restore variable set by _catkin_package_xml() since they might have been overridden by now
+  include(${CMAKE_CURRENT_BINARY_DIR}/catkin_generated/package.cmake)
+
   # use setup.py when available
   if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/setup.py")
     catkin_python_setup()
