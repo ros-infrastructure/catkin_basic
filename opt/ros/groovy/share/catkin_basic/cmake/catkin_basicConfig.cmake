@@ -25,11 +25,11 @@ macro(select_catkin_dependencies PREFIX DEPS)
     endforeach()
   endforeach()
   
-  message(${_CATKIN_CURRENT_PACKAGE} " has " ${PREFIX} " message dependencies:")
+  message(${PROJECT_NAME} " has " ${PREFIX} " message dependencies:")
   foreach(pkg ${${PREFIX}_MESSAGE_DEPENDENCIES})
     message("  -"${pkg})
   endforeach()
-  message(${_CATKIN_CURRENT_PACKAGE} " has " ${PREFIX} " dependencies:")
+  message(${PROJECT_NAME} " has " ${PREFIX} " dependencies:")
   foreach(pkg ${${PREFIX}_DEPENDENCIES})
     message("  -"${pkg})
   endforeach()
@@ -50,8 +50,8 @@ macro(catkin_basic)
   project(${_CATKIN_CURRENT_PACKAGE})
 
   # call find_package on build dependencies
-  if (DEFINED ${_CATKIN_CURRENT_PACKAGE}_BUILD_DEPENDS)  
-    select_catkin_dependencies(BUILD "${${_CATKIN_CURRENT_PACKAGE}_BUILD_DEPENDS}")
+  if (DEFINED ${PROJECT_NAME}_BUILD_DEPENDS)
+    select_catkin_dependencies(BUILD "${${PROJECT_NAME}_BUILD_DEPENDS}")
     find_package(catkin REQUIRED COMPONENTS ${BUILD_DEPENDENCIES})
   endif()
 
@@ -81,8 +81,8 @@ macro(catkin_basic)
   endif()
 
   # call catkin_package on run dependencies
-  if (DEFINED ${_CATKIN_CURRENT_PACKAGE}_RUN_DEPENDS)
-    select_catkin_dependencies(RUN "${${_CATKIN_CURRENT_PACKAGE}_RUN_DEPENDS}")
+  if (DEFINED ${PROJECT_NAME}_RUN_DEPENDS)
+    select_catkin_dependencies(RUN "${${PROJECT_NAME}_RUN_DEPENDS}")
     message("  Export my include dir: "${ARG_INCLUDE})
     message("  Export my lib dir: "${ARG_LIBRARIES})
     catkin_package(DEPENDS ${RUN_DEPENDENCIES}
