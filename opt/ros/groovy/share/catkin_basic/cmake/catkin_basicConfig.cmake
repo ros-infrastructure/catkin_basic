@@ -27,11 +27,11 @@ macro(select_catkin_dependencies PREFIX DEPS)
   
   message(${PROJECT_NAME} " has " ${PREFIX} " message dependencies:")
   foreach(pkg ${${PREFIX}_MESSAGE_DEPENDENCIES})
-    message("  -"${pkg})
+    message("  - ${pkg}")
   endforeach()
   message(${PROJECT_NAME} " has " ${PREFIX} " dependencies:")
   foreach(pkg ${${PREFIX}_DEPENDENCIES})
-    message("  -"${pkg})
+    message("  - ${pkg}")
   endforeach()
 endmacro()
 
@@ -86,14 +86,14 @@ macro(catkin_basic)
   # call catkin_package on run dependencies
   if (DEFINED ${PROJECT_NAME}_RUN_DEPENDS)
     select_catkin_dependencies(RUN "${${PROJECT_NAME}_RUN_DEPENDS}")
-    message("  Export my include dir: "${ARG_INCLUDE})
-    message("  Export my lib dir: "${ARG_LIBRARIES})
+    message("  Export my include dir: ${ARG_INCLUDE}")
+    message("  Export my lib dir: ${ARG_LIBRARIES}")
     catkin_package(DEPENDS ${RUN_DEPENDENCIES}
       INCLUDE_DIRS ${ARG_INCLUDE}
       LIBRARIES ${ARG_LIBRARIES})
   else()
-    message("  Export my include dir: "${ARG_INCLUDE})
-    message("  Export my lib dir: "${ARG_LIBRARIES})
+    message("  Export my include dir: ${ARG_INCLUDE}")
+    message("  Export my lib dir: ${ARG_LIBRARIES}")
     catkin_package(
       INCLUDE_DIRS ${ARG_INCLUDE}
       LIBRARIES ${ARG_LIBRARIES})
